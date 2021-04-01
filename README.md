@@ -21,12 +21,14 @@ The class validates the following postcode formats, where A signifies a letter a
 
 | Format | Example |
 | --- | --- |
-| AA9A 9AA | EC1A 1BB |
-| A9A 9AA | W1A 0AX |
-| A9 9AA | M1 1AE |
-| A99 9AA | B33 8TH |
+| A9 9AA | B1 2NS |
+| A99 9AA | M60 1NW |
 | AA9 9AA | CR2 6XH |
-| AA99 9AA | DN55 1PT |
+| AA99 9AA | RH10 1SL |
+| A9A 9AA | W1A 0AX |
+| AA9A 9AA | EC1M 1BB |
+
+
 
 Based on information in the Wikipedia article here:  https://en.wikipedia.org/wiki/Postcodes_in_the_United_Kingdom#Formatting.
 
