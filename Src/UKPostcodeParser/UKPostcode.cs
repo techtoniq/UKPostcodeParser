@@ -11,7 +11,7 @@ namespace UKPostcodeParser
         private string inwardUnit = string.Empty;
 
         public string Area { get { return outwardArea; } }
-        public string District { get { return $"{Area}{District}"; } }
+        public string District { get { return outwardDistrict; } }
         public string Sector { get { return inwardSector; } }
         public string Unit { get { return inwardUnit; } }
 
@@ -20,14 +20,15 @@ namespace UKPostcodeParser
 
         public override string ToString()
         {
-            return $"{OutwardCode} {InwardCode}";
+            return $"{Area}{District} {Sector}{Unit}";
         }
 
         public UKPostcode(string postcode)
         {
-            if (string.IsNullOrWhiteSpace(postcode)) throw new ArgumentException("Missing postcode");
+            if (string.IsNullOrWhiteSpace(postcode))
+                throw new ArgumentException("Missing postcode");
 
-            if(!IsValidFormat(postcode))
+            if (!IsValidFormat(postcode))
             {
                 throw new ArgumentException("Invalid postcode format");
             }
@@ -45,12 +46,13 @@ namespace UKPostcodeParser
         private void ParsePostcode(string postcode)
         {
             int outwardInwardBreakPos = postcode.IndexOf(" ");
-            if (-1 == outwardInwardBreakPos) throw new ArgumentException("Missing space between outward and inward sections of postcode");
+            if (-1 == outwardInwardBreakPos)
+                throw new ArgumentException("Missing space between outward and inward sections of postcode");
 
             int charPos = 0;
-            while(charPos < outwardInwardBreakPos)
+            while (charPos < outwardInwardBreakPos)
             {
-                if(char.IsLetter(postcode[charPos]) && string.IsNullOrWhiteSpace(outwardDistrict))
+                if (char.IsLetter(postcode[charPos]) && string.IsNullOrWhiteSpace(outwardDistrict))
                 {
                     outwardArea += postcode[charPos];
                 }
